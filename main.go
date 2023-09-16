@@ -73,9 +73,6 @@ func main() {
 
 		} else {
 			cmd := cmdList[0]
-			if strings.Compare("kill", cmd) == 0 {
-				
-			}
 			// check for background process
 			if strings.Compare("&", cmdList[len(cmdList)-1]) == 0 {
 				path, err := exec.LookPath(cmd)
@@ -113,9 +110,7 @@ func runBackgroundProcess(path string, args []string, procAttr *os.ProcAttr, nam
 		printError("error when running your process", err)
 	} else {
 		c.add(name, process.Pid)
-		fmt.Println(c.Table[process.Pid])
 		process.Wait()
-		fmt.Printf("done with process %d\n", process.Pid)
 		c.remove(process.Pid)
 	}
 }
