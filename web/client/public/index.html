@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="../app.ts"></script>
-    <script type="module" src="../scripts/index.ts"></script>
-    <title>Use the terminal</title>
-</head>
-<body>
-    <div>Hello</div>
-    <div id="terminal"></div>
-</body>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal@2.x.x/js/jquery.terminal.min.js"></script>
+    <script type="module" src="../app.js"></script>
+    <script type="module" src="../scripts/index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/jquery.terminal@2.x.x/css/jquery.terminal.min.css"
+    />
+  </head>
+  <body>
+    <div id="terminal-container">
+        <div id="terminal">
+
+        </div>
+    </div>
+  </body>
 </html>
