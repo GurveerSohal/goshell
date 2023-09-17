@@ -44,7 +44,7 @@ func reader(conn *websocket.Conn) {
 
 		fmt.Println("received", string(p))
 
-		if err := conn.WriteMessage(messageType, []byte("Received!")); err != nil {
+		if err := conn.WriteMessage(messageType, p); err != nil {
 			fmt.Println("error when writing message")
 			return
 		}
