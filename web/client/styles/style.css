@@ -1,0 +1,65 @@
+#terminal-container {
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 25vh;
+    margin-top: 10vh;
+}
+
+#terminal {
+    width: 75%;
+    overflow: auto;
+    height: 40vh;
+}
+
+#text-display {
+    margin-top: 50px;
+    height: 35vh;
+    width: 80%;
+    background-color: white;
+    overflow: auto;
+}
+.horizontal-container {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.try-container {
+    display: flex;  
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-top: 100px;
+}
+
+.learn-container {
+    display: flex;  
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-top: 100px;
+    align-self: flex-start;
+}
+
+.cmd-info {
+    color: black;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-top: 50px;
+}
+input {
+    display: inline !important;
+    width: 300px;
+}
+

@@ -1,8 +1,9 @@
+import { commands } from "./commands";
+
 let socket = new WebSocket("ws://127.0.0.1:8080/ws");
 console.log("Attempting Connection...");
 socket.onopen = () => {
   console.log("Successfully Connected");
-  socket.send("Hi From the Client!");
 };
 
 let term;
@@ -31,6 +32,26 @@ $(function () {
     },
     {
       prompt: "goshell% ",
+      greetings: "Welcome to your shell!"
     }
   );
 });
+
+const inputEl = document.getElementById("learn-input")
+inputEl.addEventListener('keydown', (event) => {
+  if (event.key == 'Enter') {
+    event.preventDefault()
+    const textDiv = document.getElementById("text-display")
+    const cmd = event.target.value
+    let text = commands[cmd]
+
+    if (!text) {
+      text = "Command not found"
+    }
+    textDiv.innerHTML = `
+    <p class="cmd-info">
+    ${text}
+    </p>
+    `
+  }
+})
