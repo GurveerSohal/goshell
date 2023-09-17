@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os/exec"
+	"strings"
 
 	"github.com/gorilla/websocket"
 )
@@ -44,9 +46,28 @@ func reader(conn *websocket.Conn) {
 
 		fmt.Println("received", string(p))
 
-		if err := conn.WriteMessage(messageType, p); err != nil {
-			fmt.Println("error when writing message")
-			return
+		cmdList := strings.Fields(string(p))
+
+		path, err := exec.LookPath(cmdList[0])
+		if err != nil {
+			writeMessage(messageType, []byte("Could not run your command"), conn)
+			continue
 		}
+		
+		cmdList[0] = path
+ 		cmd := exec.Command(path, cmdList[1:]...)
+		out, err := cmd.Output()
+		if err != nil {
+			writeMessage(messageType, []byte("Could not run your command"), conn)
+		} else {
+			writeMessage(messageType, out, conn)
+		}
+	}
+}
+
+func writeMessage(messageType int, p []byte, conn *websocket.Conn) {
+	if err := conn.WriteMessage(messageType, p); err != nil {
+		fmt.Println("error when writing message")
+		return
 	}
 }
