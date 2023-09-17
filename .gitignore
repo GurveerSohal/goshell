@@ -1,1 +1,6 @@
 root/
+**/node_modules
+**/.parcel-cache
+**/dist
+**/devDist
+**/.DS_Store
