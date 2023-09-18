@@ -4,3 +4,4 @@ root/
 **/dist
 **/devDist
 **/.DS_Store
+**/.log*
